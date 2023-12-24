@@ -6,7 +6,7 @@ import java.util.List;
 public class Shape {
 
     private List<Points> validShape;
-    private List<Points> points = new ArrayList<>();
+    private final List<Points> points = new ArrayList<>();
 
     public void addPoint(Points point){
         points.add(point);
@@ -24,7 +24,7 @@ public class Shape {
             return;
         }
 
-        Points lastPoint = currentShape.isEmpty() ? null : currentShape.get(currentShape.size() - 1);
+        Points lastPoint = currentShape.isEmpty() ? null : currentShape.getLast();
 
         for (int i = 0; i < remainingPoints.size(); i++) {
             Points currentPoint = remainingPoints.get(i);
@@ -43,7 +43,7 @@ public class Shape {
 
     public void buildShape() {
         List<List<Points>> validShapes = getAllValidShapes(points);
-        validShape = validShapes.get(0);
+        validShape = validShapes.getFirst();
     }
 
     public double calculatePerimeter() {
